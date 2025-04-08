@@ -1,6 +1,8 @@
 if(process.env.NODE_ENV != "production"){
   require('dotenv').config();
 }
+
+
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -103,8 +105,7 @@ app.all("*", (req, res, next) => {
 
 //middleware error handling
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "something went wrong" } = err;
-
+  let { statusCode = 500, message = "something went wrong"} = err;
   res.status(statusCode).render("error.ejs", { message });
 
 });
