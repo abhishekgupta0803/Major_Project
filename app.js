@@ -24,7 +24,7 @@ const port = 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-// const MONGO_URL = ""mongodb://127.0.0.1:27017/wanderlust";
+// const MONGOLOCAL_URL = ""mongodb://127.0.0.1:27017/wanderlust";
  const dburl =  process.env.ATLASDB_URL
 main().then((res) => {
   console.log("Db is connected");
