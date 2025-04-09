@@ -22,9 +22,10 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const port = 8080;
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-// const MONGOLOCAL_URL = ""mongodb://127.0.0.1:27017/wanderlust";
+
  const dburl =  process.env.ATLASDB_URL
 main().then((res) => {
   console.log("Db is connected");
@@ -105,10 +106,11 @@ app.all("*", (req, res, next) => {
 
 //middleware error handling
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "something went wrong"} = err;
+  let { statusCode = 500, message = " Something went wrong..."} = err;
   res.status(statusCode).render("error.ejs", { message });
 
 });
+
 
 app.listen(port, (req, res) => {
   console.log("app is listing");
