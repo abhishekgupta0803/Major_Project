@@ -2,7 +2,6 @@ if(process.env.NODE_ENV != "production"){
   require('dotenv').config();
 }
 
-
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -27,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
  const dburl =  process.env.ATLASDB_URL
-main().then((res) => {
+main().then(() => {
   console.log("Db is connected");
 }).catch((ex) => {
   console.log(ex);
@@ -43,8 +42,6 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
-
-
 
 
 const store = MongoStore.create({
@@ -70,9 +67,6 @@ const sessionOptions = {
     httpOnly:true,
   },
 };
-
-
-
 
 app.use(session(sessionOptions));
 app.use(flash());
