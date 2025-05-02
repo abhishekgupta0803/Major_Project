@@ -264,6 +264,7 @@ const sampleListings = [
     country: "Greece",
   },
   {
+    
     title: "Eco-Friendly Treehouse Retreat",
     description:
       "Stay in an eco-friendly treehouse nestled in the forest. It's the perfect escape for nature lovers.",
